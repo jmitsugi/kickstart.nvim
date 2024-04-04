@@ -837,6 +837,58 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+  {
+    'is0n/jaq-nvim',
+    config = function()
+      require('jaq-nvim').setup {
+        cmds = {
+          internal = {
+            lua = 'luafile %',
+            vim = 'source %',
+          },
+          external = {
+            python = 'python3 %',
+            go = 'go run %',
+            sh = 'sh %',
+            ruby = 'ruby %',
+            java = 'java %',
+            javascript = 'node %',
+          },
+        },
+        behavior = {
+          default = 'float',
+          startinsert = false,
+          wincmd = false,
+          autosave = false,
+        },
+        ui = {
+          float = {
+            border = 'none',
+            winhl = 'Normal',
+            borderhl = 'FloatBorder',
+            winblend = 0,
+            height = 0.8,
+            width = 0.8,
+            x = 0.5,
+            y = 0.5,
+          },
+
+          terminal = {
+            position = 'bot',
+            size = 10,
+            line_no = false,
+          },
+          quickfix = {
+            position = 'bot',
+            size = 10,
+          },
+        },
+      }
+    end,
+    keys = {
+      { '<leader>j', ':<C-u>Jaq<CR>', desc = 'QuickRun' },
+    },
+  },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -850,7 +902,6 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
