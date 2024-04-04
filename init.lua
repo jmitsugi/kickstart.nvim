@@ -889,6 +889,17 @@ require('lazy').setup({
       { '<leader>j', ':<C-u>Jaq<CR>', desc = 'QuickRun' },
     },
   },
+  {
+    'nvim-zh/colorful-winsep.nvim',
+    config = function()
+      require('colorful-winsep').setup {
+        highlight = {
+          bg = '',
+          fg = '#E8AEAA',
+        },
+      }
+    end,
+  },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
